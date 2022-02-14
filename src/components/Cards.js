@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Card, Accordion } from "react-bootstrap";
+import React , {useState, useEffect} from "react";
+import { CardComponent } from "./CardComponent";
+import semaforo from "../assets/semaforo.jpg";
 
-export const InfoCard = () => {
+export const Cards = () => {
+
+    // Data Storage
+
     const url = "http://palmira.rts.com.co:4010/getTrama";
 
     const [datosEquipo, setDatosEquipo] = useState({
@@ -22,7 +26,8 @@ export const InfoCard = () => {
         b1: "",
         b2: "",
         b3: "",
-        b4: ""
+        b4: "",
+        image: semaforo
 
     });
 
@@ -191,44 +196,16 @@ export const InfoCard = () => {
         fetchApi();
     },[]);
 
+    //End of data storage
+
+
   return (
-    <>
-      <Card style={{ width: "25rem", marginRight: "auto", marginLeft: "auto" }}>
-        <Card.Img
-          variant="top"
-          src="https://estaticos.muyinteresante.es/media/cache/400x300_thumb/uploads/images/pyr/55cc87de3eafe8319b626548/sema%CC%81foro.jpg"
-        />
-        <Card.Body>
-          <Card.Title>Equipo Semaf&oacute;rico</Card.Title>
-            <Accordion className="my-3">
-              <Accordion.Item eventKey="0">
-                <Accordion.Header> <b>Informaci&oacute;n t&eacute;cnica</b> </Accordion.Header>
-                <Accordion.Body>
-                <Card.Text>
-                  <b>C&oacute;digo del equipo:</b> {  datosEquipo.codigo } <br />
-                  <b>Clave de tiempo:</b> <br/>
-                  &nbsp;&nbsp;&nbsp;&nbsp; <b>Fecha modificaci&oacute;n:</b> { datosEquipo.claveTiempo.diaModificacion + "/" + datosEquipo.claveTiempo.mesModificacion + "/20" + datosEquipo.claveTiempo.yearModificacion } <br/>
-                  &nbsp;&nbsp;&nbsp;&nbsp; <b>Hora modificaci&oacute;n:</b> { datosEquipo.claveTiempo.horaModificacion } <br/>
-                  <b>Fecha Publicaci&oacute;n:</b> { (datosEquipo.dia.toString().length === 1 ? "0"+datosEquipo.dia : datosEquipo.dia) +"/" +datosEquipo.mes +"/20"+ datosEquipo.year} <br/>
-                  <b>Hora Publicaci&oacute;n:</b> { (datosEquipo.hora.toString().length === 1 ? "0"+datosEquipo.hora : datosEquipo.hora) + ":" + (datosEquipo.minuto.toString().length === 1 ? "0"+datosEquipo.minuto : datosEquipo.minuto) + ":" + (datosEquipo.segundo.toString().length === 1 ? "0"+datosEquipo.segundo : datosEquipo.segundo) } <br/>
-                  <b>Contador de Cruce:</b> { datosEquipo.contadorCruce }
-                </Card.Text>
-                </Accordion.Body>
-              </Accordion.Item>
-              <Accordion.Item eventKey="1">
-                <Accordion.Header> <b>Ver Estados</b> </Accordion.Header>
-                <Accordion.Body>
-                <Card.Text>
-                  <b>B1:</b> { datosEquipo.b1 } <br />
-                  <b>B2:</b> { datosEquipo.b2 } <br />
-                  <b>B3:</b> { datosEquipo.b3 } <br />
-                  <b>B4:</b> { datosEquipo.b4 } <br />
-                </Card.Text>
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-        </Card.Body>
-      </Card>
-    </>
+    <div className="container d-flex justify-content-center h-100 align-items-center">
+      <div className="row justify-content-center">
+        <div className="col-md-4">
+            <CardComponent datosEquipo = {datosEquipo} />
+        </div>
+      </div>
+    </div>
   );
 };

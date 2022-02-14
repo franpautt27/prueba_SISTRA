@@ -1,17 +1,12 @@
-import { Footer } from "./components/Footer";
-import { InfoCard } from "./components/InfoCard";
-import { NavBar } from "./components/NavBar";
+import "./App.css";
+import { Cards } from "./components/Cards";
 
 
 function App() {
   return (
-    <>
-      <NavBar />
-      <div className="container my-5">
-        <InfoCard />
-      </div>
-      <Footer />
-    </>
+    <div className="App">
+      <Cards/>
+    </div>
   );
 }
 
