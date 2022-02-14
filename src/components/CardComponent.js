@@ -38,11 +38,11 @@ export const CardComponent = (props) => {
           <Modal.Body className="text-light text-center">
             <b>C&oacute;digo del equipo:</b> {props.datosEquipo.codigo} <br />
             <b>Fecha modificaci&oacute;n:</b>{" "}
-            {props.datosEquipo.claveTiempo.diaModificacion +
+            {(props.datosEquipo.claveTiempo.diaModificacion.toString().length === 1 ? "0" + props.datosEquipo.claveTiempo.diaModificacion : props.datosEquipo.claveTiempo.diaModificacion)  +
               " de " +
               props.datosEquipo.claveTiempo.mesModificacion +
               " del 20" +
-              props.datosEquipo.claveTiempo.yearModificacion}{" "}
+              (props.datosEquipo.claveTiempo.yearModificacion.toString().length === 1 ? "0" + props.datosEquipo.claveTiempo.yearModificacion : props.datosEquipo.claveTiempo.yearModificacion)}{" "}
             <br />
             <b>Hora modificaci&oacute;n:</b>{" "}
             {props.datosEquipo.claveTiempo.horaModificacion} <br />
